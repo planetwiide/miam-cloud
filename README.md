@@ -38,6 +38,7 @@ _author: [planetwide](https://github.com/planetwiide)_
 - [🤝 contributing](#contributing)
 - [🐞 issues](#issues)
 - [📝 license](#license)
+- [📗 credits](#credits)
 - [🖼️ preview](#preview)
 
 ---
@@ -109,6 +110,11 @@ want to contribute? awesome! follow the steps below to get started:
 found a bug or have a feature request? feel free to [open an issue](https://github.com/planetwiide/miam-cloud/issues). we'll address it as soon as we can!
 
 ---
+
+## 📗 credits
+
+this project was inspired by the ♉ [zodiac](https://github.com/billythegoat356/Zodiac) project by 🐐 [billythegoat365](https://github.com/billythegoat356/). while i drew inspiration from his work, i want to clarify that i did not copy it directly. all code has been rewritten from scratch, and i have implemented my own ideas and features. i plan to continue developing and maintaining this project, with new features on the way soon. thanks to billy for the initial inspiration!
+
 
 ## 📝 license
 
