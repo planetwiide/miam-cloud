@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Cloud</title>
+    <link rel="icon" href="images/logo.png">
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="header_logo">
+                
+                <a href="https://planetwide.xyz/"><img src="images/planetwide.png"></a>
+                
+            </div>
+            <div class="header_links">
+                <input class="search" type="text" name="search" id="search" placeholder="search">
+                <button class="download" onclick="download()"><img src="images/search.jpg" width="20", height="20"></button>
+            </div>
+        </nav>
+    </header>
+
+    <h1 class="lcloud"><i>miam cloud</i></h1>
+
+    <section class="content">
+        <div class="fileUpload btn btn-primary">
+            <span class="select_a_file" id="select_file">select a file</span>
+            <input class="file_upload" type="file" name="file" id="file">
+        </div>
+        <input disabled class="file_uploaded" type="text" name="file_sent" id="file_sent" placeholder="no file selected">
+        <input class="filename" type="text" name="filename" id="filename" placeholder="choose a name">
+
+        <button onclick="send()">send</button>
+
+
+        <script>
+
+            document.getElementById("file").onchange = function() {
+                var filename = this.value.split('\\')
+                document.getElementById("file_sent").value = filename[filename.length - 1];
+            };
+
+            async function send() {
+                const file = document.getElementById("file").files[0];
+                var _filename = document.getElementById("file").value;
+                var filename = document.getElementById("filename").value;
+
+
+                if (file == null) {
+                    document.getElementById("select_file").innerHTML = "select a file first";
+                    document.getElementById("select_file").style.color = "red";
+                    return;
+                }
+
+                if (filename == "") {
+                    document.getElementById("select_file").innerHTML = "name the file first";
+                    document.getElementById("select_file").style.color = "red";
+                    return;
+                }
+
+                if (_filename.includes('.') == false) {
+                    _filename = _filename + '.txt';
+                }
+
+                _filename = _filename.split('.');
+                var filename = filename + '.' + _filename[_filename.length - 1];
+
+                let formData = new FormData();
+                var myRequest = new Request('/upload?filename=' + filename);
+                
+                formData.append("file", file);
+                await fetch(myRequest, { method: "POST", body: formData });
+
+                document.getElementById("select_file").innerHTML = "Envoyé!";
+                document.getElementById("select_file").style.color = "green";
+                setTimeout(() => { window.location.reload(); }, 1000);
+            }
+            function download() {
+                var search = document.getElementById("search").value;
+
+                if (search == "") {
+                    var search = "miamcloud";
+                }
+
+                document.getElementById("search").value = "";
+                window.location.replace('/get/' + search)
+            }
+
+
+        </script>
+    </section>
+
+    <footer>
+        miam cloud © <a class="links" href="https://github.com/planetwiide">planetwide</a>
+    </footer>
+
+</body>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Open Sans&display=swap');
+/* Reset */
+
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: linear-gradient(4deg, #0f0c15, #483752);
+    color: #fff;
+    font-family: "Open Sans", sans-serif;
+    min-height: 100vh;
+}
+
+
+
+footer {
+    font-family: 'Open Sans', sans-serif;
+    opacity: 1;
+    font-size: 13.5px;
+    width: 100%;
+    color: #ccc;
+    text-align: center;
+    padding: 20px 0px 10px 0px;
+    margin-bottom: 5px;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+}
+
+footer a {
+    color: rgb(255, 134, 251);
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+header nav .header_links ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+header nav .header_links ul li, section.main ul li {
+    list-style-type: none;
+}
+
+header nav .header_links ul li a {
+    outline: none;
+    text-decoration: none;
+    color: #a6a8b8;
+    padding: 5px 12px;
+    transition: 0.3s all;
+    font-size: 15px;
+}
+
+header nav .header_links ul li a:hover {
+    color: rgb(0, 0, 0);
+}
+
+header nav .header_logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    border: 5px solid #3b3d4e93;
+}
+
+.links {
+	text-decoration-color: transparent;
+}
+
+
+
+
+.lcloud {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 70px;
+}
+
+.lcloud a {
+    color: white;
+    text-decoration-color: transparent;
+}
+
+
+section.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 75px;
+}
+
+section.content input.file_upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+section.content input.filename:hover {
+    transition: 0.3s;
+    background: #a767a1;
+}
+
+section.content input.filename,  section.content input.file_uploaded{
+    color: white;
+    background: #101013;
+    border-style: none;
+    outline: none;
+    padding: 5px 5px 5px 10px;
+    width: 270px;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 25px;
+    transition: 0.5s;
+}
+
+section.content input.filename:focus {
+    transition: 2s;
+    width: 320px;
+}
+
+
+
+
+
+
+section.content button:hover {
+    background: #a767a1;
+    transition: 0.3s all;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    border-radius: 50px;
+    transition: 0.5s;
+}
+
+.fileUpload span:hover {
+    transition: 0.3s;
+    background: #a767a1;
+}
+
+
+section.content button {
+    background: #a767a1;
+    color: white;
+    border-style: none;
+    border-radius: 20px;
+    width: 100px;
+    height: 40px;
+    transition: 0.3s all;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.fileUpload span {
+    color: #000000;
+    background: #fab8ff;
+    border-style: none;
+    outline: none;
+    padding: 10px 0 5px;
+    width: 270px;
+    height: 30px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.preview {
+    margin-top: 20px;
+    width: 100px;
+}
+
+.search {
+    color: white;
+    background: #101013;
+    border-style: none;
+    outline: none;
+    padding: 5px 5px 5px 10px;
+    width: 45px;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 25px;
+    transition: 0.5s;
+}
+
+.search:hover {
+    transition: 0.3s;
+    background: #131316;
+}
+
+.search:focus {
+    transition: 1s;
+    width: 280px;
+}
+
+.download {
+    background: #ff96fc;
+    color: white;
+    border-style: none;
+    border-radius: 7px;
+    width: 50px;
+    height: 50px;
+    transition: 0.3s all;
+    cursor: pointer;
+    margin-left: 40px;
+    border-radius: 100%;
+}
+.download:hover {
+    background: #a767a1;
+    transition: 0.3s all;
+}
+
+/* Responsive     */
+@media (max-width: 768px) {
+    header nav {
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+
+    header nav .header_logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .lcloud {
+        margin-top: 50px;
+        font-size: 50px;
+    }
+
+    section.content {
+        margin-top: 50px;
+    }
+
+    section.content input.filename, section.content input.file_uploaded, .search {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    section.content input.filename:focus, .search:focus {
+        width: 100%;
+    }
+
+    section.content button {
+        width: 80%;
+        font-size: 16px;
+    }
+
+    .fileUpload span {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .download {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    header nav {
+        padding: 5px 10px;
+    }
+
+    header nav .header_logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .lcloud {
+        margin-top: 30px;
+        font-size: 40px;
+    }
+
+    section.content {
+        margin-top: 30px;
+    }
+
+    section.content input.filename, section.content input.file_uploaded, .search {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    section.content input.filename:focus, .search:focus {
+        width: 100%;
+    }
+
+    section.content button {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .fileUpload span {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .download {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+}
+
+
+</style>
+
+</html>
+
