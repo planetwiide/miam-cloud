@@ -1,35 +1,19 @@
-# miamcloud - v3.0.1
-# author: planetwide
-# description: 
-# this script creates a flask-based web application called "miamcloud" that allows users to upload, download, and manage files.
-# the application also includes an ascii ui display with animations using the pystyle library.
+# MiamCloud - v3.0.1
+# Author: Planetwide
+# Description:
+# This script sets up a Flask-based web application named "MiamCloud" for uploading, downloading, and managing files.
+# The application features an ASCII UI display with animations using the Pystyle library.
 
-# import necessary modules
-from os import listdir, chdir, name as os_name
-from os.path import isfile as is_file_path
+# Import required modules
 from flask import Flask, request, send_file, redirect
 from pystyle import Colorate, Colors, System, Center, Write, Anime
-from webbrowser import open_new as start_browser
+from webbrowser import open_new as open_browser
 from socket import gethostname, gethostbyname
+from os import listdir, chdir, name as os_name
+from os.path import isfile as file_exists
 
-# ascii banner with image
-banner = '''
-                _                                  
-              (`  ).                   _           
-             (     ).              .:(`  )`.       
-            _(       '`.          :(   .    )      
-        .=(`(      .   )     .--  `.  (    ) )      
-        ((    (..__.:'-'   .+(   )   ` _`  ) )                 
-       `(       ) )       (   .  )     (   )  ._   
-         ` __.:'   )     (   (   ))     `-'.-(`  ) 
-      ( )       --'       `- __.'         :(      )) 
-     (_.'          .')                    `(    )  ))
-                  (_  )                     ` __.:'          
-                                        
-                                        '''
-
-# ascii banner for miamcloud
-miamcloud = """
+# ASCII banner for MiamCloud
+miamcloud_banner = """
               d8b                       
               Y8P                       
                                         
@@ -49,30 +33,65 @@ Y88b.    888 Y88..88P Y88b 888 Y88b 888
  "Y8888P 888  "Y88P"   "Y88888  "Y88888 
 """
 
+# ASCII banner with image
+banner_image = '''
+                _                                  
+              (`  ).                   _           
+             (     ).              .:(`  )`.       
+            _(       '`.          :(   .    )      
+        .=(`(      .   )     .--  `.  (    ) )      
+        ((    (..__.:'-'   .+(   )   ` _`  ) )                 
+       `(       ) )       (   .  )     (   )  ._   
+         ` __.:'   )     (   (   ))     `-'.-(`  ) 
+      ( )       --'       `- __.'         :(      )) 
+     (_.'          .')                    `(    )  ))
+                  (_  )                     ` __.:'          
+                                        
+                                        '''
 
+# Flask application initialization
+app = Flask("MiamCloud")
 
-# flask app initialization
-app = Flask("miamcloud")
+# Function to read the content of a file and return it
+def read_file_contents(filename: str):
+    with open(filename, 'r', encoding='utf-8') as file:
+        return file.read()
 
-# start flask app
-def run(host: str, port: int):
+# Start the Flask application
+def start_flask_app(host: str, port: int):
     return app.run(host, port)
 
-# main route to display index.html
+# Main route to display index.html
 @app.route('/', methods=['GET'])
-def main_route():
-    return render('front/index.html')
+def index_route():
+    return read_file_contents('front/index.html')
 
-# function to return text and a status code
-def ren(text: str, status_code: int = 200) -> tuple:
+# Function to return text and a status code
+def response_with_status(text: str, status_code: int = 200) -> tuple:
     print(f"Response: {text} | Status Code: {status_code}")
     return text, status_code
 
-# route to retrieve a file
+# Route to handle file uploads
+@app.route('/upload', methods=['POST'])
+def upload_handler():
+    try:
+        filename = request.args.get('filename', '').strip()
+        if not filename:
+            return response_with_status('error, invalid filename provided.')
+        
+        uploaded_file = request.files.get('file')
+        if uploaded_file:
+            uploaded_file.save(f'files/{filename}')
+            return redirect('/')
+        return response_with_status('error, no file uploaded.')
+    except Exception as error:
+        return response_with_status(f'error: {str(error)}')
+
+# Route to retrieve a file
 @app.route('/get/<filename>', methods=['GET'])
-def get_route(filename):
+def file_retrieval_route(filename):
     file_path = f'files/{filename}'
-    if is_file_path(file_path):
+    if file_exists(file_path):
         return send_file(file_path, as_attachment=True)
     
     for file in listdir('files'):
@@ -81,91 +100,67 @@ def get_route(filename):
     
     return send_file('files/miamcloud.png', as_attachment=True)
 
-# function to read the contents of a file and return it
-def render(filename: str):
-    with open(filename, 'r', encoding='utf-8') as file:
-        return file.read()
-      
-# route to handle file uploads
-@app.route('/upload', methods=['POST'])
-def upload_route():
-    try:
-        name = request.args.get('filename', '').strip()
-        if not name:
-            return ren('error, invalid filename provided.')
-        
-        file = request.files.get('file')
-        if file:
-            file.save(f'files/{name}')
-            return redirect('/')
-        return ren('error, no file uploaded.')
-    except Exception as e:
-        return ren(f'error: {str(e)}')
-
-
-
-# route to retrieve an image
+# Route to retrieve an image
 @app.route('/images/<image>', methods=['GET'])
-def image_route(image):
+def image_retrieval_route(image):
     image_path = f'front/images/{image}'
-    if is_file_path(image_path):
+    if file_exists(image_path):
         return send_file(image_path, as_attachment=True)
     return send_file('files/miamcloud.png', as_attachment=True)
 
-
-
-# function to display the ui
-def ui():
-    System.Clear()
-    print("\n" * 2)
-    print(Colorate.Diagonal(Colors.blue_to_purple, Center.XCenter(miamcloud)))
-    print("\n" * 5)
-  
-# system configuration with pystyle
+# System configuration with Pystyle
 System.Clear()
 System.Size(160, 50)
-System.Title("miamcloud")
+System.Title("MiamCloud")
 
-# banner animation display
-Anime.Fade(Center.Center(banner), Colors.blue_to_purple,
+# Function to display the UI
+def display_ui():
+    System.Clear()
+    print("\n" * 2)
+    print(Colorate.Diagonal(Colors.blue_to_purple, Center.XCenter(miamcloud_banner)))
+    print("\n" * 5)
+
+# Banner animation display
+Anime.Fade(Center.Center(banner_image), Colors.blue_to_purple,
            Colorate.Diagonal, enter=True)
 
-# main function
+# Main function
 def main():
-    ui()
+    display_ui()
 
-    # automate hostname and IP retrieval
+    # Retrieve hostname and local IP
     hostname, local_ip = gethostname(), gethostbyname(gethostname())
     print(" ")
-    # input for IP and port
-    host = Write.Input("input IP address (press enter to automate): ",
-                    Colors.blue_to_purple, interval=0.005) or local_ip
+
+    # Input for IP and port
+    host = Write.Input("Input IP address (press enter to automate): ",
+                       Colors.blue_to_purple, interval=0.002) or local_ip
 
     print(" ")
 
-    port = Write.Input("input port (press enter to automate): ",
-                    Colors.blue_to_purple, interval=0.005) or "8080"
+    port = Write.Input("Input port (press enter to automate): ",
+                       Colors.blue_to_purple, interval=0.002) or "8080"
     
     try:
         port = int(port)
     except ValueError:
-        Colorate.Error("invalid port; port should be an integer.")
+        Colorate.Error("Invalid port; port should be an integer.")
         return
 
     print(" ")
-    Write.Input("press enter to run the server ", Colors.blue_to_purple, interval=0.005)
+    Write.Input("Press enter to run the server ", Colors.blue_to_purple, interval=0.002)
 
-    # generate and start the URL
+    # Generate and start the URL
     url = f"http://{host}:{port}/"
-    start_browser(url)
+    open_browser(url)
     
-    ui()
-    print(Colorate.Vertical(Colors.blue_to_purple, f"   running on: {url}"))
+    display_ui()
+    print(Colorate.Vertical(Colors.blue_to_purple, f"   Running on: {url}"))
     print(Colors.green, end='')
 
-    run(host=host, port=port)
+    start_flask_app(host=host, port=port)
 
-# entry point
+# Entry point
 if __name__ == '__main__':
     while True:
         main()
