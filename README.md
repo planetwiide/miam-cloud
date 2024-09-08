@@ -55,8 +55,8 @@ before starting, make sure you have:
 
 1. clone the repo or download the project files:
    ```bash
-   git clone https://github.com/planetwiide/miamcloud.git
-   cd miamcloud
+   git clone https://github.com/planetwiide/miam-cloud.git
+   cd miam-cloud
    ```
 
 2. install the dependencies:
@@ -105,7 +105,7 @@ want to contribute? awesome! follow the steps below to get started:
 
 ## 🐞 issues
 
-found a bug or have a feature request? feel free to [open an issue](https://github.com/planetwiide/miamcloud/issues). we'll address it as soon as we can!
+found a bug or have a feature request? feel free to [open an issue](https://github.com/planetwiide/miam-cloud/issues). we'll address it as soon as we can!
 
 ---
 
