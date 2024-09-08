@@ -1,11 +1,11 @@
 ![miamcloud](https://github.com/user-attachments/assets/8a6895a6-044b-40c2-b494-e700a61f1215)
 
-![⭐](https://img.shields.io/github/stars/planetwiide/miamcloud?style=social)
-![🍴](https://img.shields.io/github/forks/planetwiide/miamcloud?style=social)
-!🐞[](https://img.shields.io/github/issues/planetwiide/miamcloud)
-![⚡](https://img.shields.io/github/commit-activity/m/planetwiide/miamcloud)
-!🆙[](https://img.shields.io/github/last-commit/planetwiide/miamcloud)
-![📚](https://img.shields.io/github/license/planetwiide/miamcloud)
+![⭐](https://img.shields.io/github/stars/planetwiide/miam-cloud?style=social)
+![🍴](https://img.shields.io/github/forks/planetwiide/miam-cloud?style=social)
+![🐞](https://img.shields.io/github/issues/planetwiide/miam-cloud)
+![⚡](https://img.shields.io/github/commit-activity/m/planetwiide/miam-cloud)
+![🆙](https://img.shields.io/github/last-commit/planetwiide/miam-cloud)
+![📚](https://img.shields.io/github/license/planetwiide/miam-cloud)
 
 
 # 🌩️ miamcloud - v3.0.1
