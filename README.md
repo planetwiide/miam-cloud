@@ -38,6 +38,7 @@ _author: [planetwide](https://github.com/planetwiide)_
 - [🤝 contributing](#contributing)
 - [🐞 issues](#issues)
 - [📝 license](#license)
+- [🖼️ preview](#preview)
 
 ---
 
@@ -112,3 +113,13 @@ found a bug or have a feature request? feel free to [open an issue](https://gith
 ## 📝 license
 
 this project is licensed under the [mit license](https://opensource.org/licenses/MIT).
+
+## 🖼️ preview
+![image](https://github.com/user-attachments/assets/0c1f3a17-bf03-4151-9dfc-5b8081c6230c)
+![image](https://github.com/user-attachments/assets/50123a17-c79e-4ec5-8c14-ad13c343d1c0)
+![image](https://github.com/user-attachments/assets/b23206f1-9bd3-4c80-bac8-075c5299a0e8)
+![image](https://github.com/user-attachments/assets/cc5fa67d-9b9b-4fea-b742-62627ee26548)
+![image](https://github.com/user-attachments/assets/280074c9-4132-42e0-b893-99c0a40ea087)
+
+
+
