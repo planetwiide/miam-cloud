@@ -1,95 +1,114 @@
-# Miamcloud - v3.0.1
+![miamcloud](https://github.com/user-attachments/assets/8a6895a6-044b-40c2-b494-e700a61f1215)
 
-Author: planetwide
+![⭐](https://img.shields.io/github/stars/planetwiide/miamcloud?style=social)
+![🍴](https://img.shields.io/github/forks/planetwiide/miamcloud?style=social)
+!🐞[](https://img.shields.io/github/issues/planetwiide/miamcloud)
+![⚡](https://img.shields.io/github/commit-activity/m/planetwiide/miamcloud)
+!🆙[](https://img.shields.io/github/last-commit/planetwiide/miamcloud)
+![📚](https://img.shields.io/github/license/planetwiide/miamcloud)
 
-## Description
 
-**Miamcloud** is a Flask-based web application designed to facilitate easy file management through a web interface. Users can upload, download, and retrieve files, as well as images, from their server. The application integrates with **pystyle** to provide an interactive, animated user interface with ASCII banners and a clean terminal UI display. 
+# 🌩️ miamcloud - v3.0.1
 
-## Features
-
-- **File Uploading**: Upload files directly through the web interface.
-- **File Downloading**: Retrieve uploaded files through a secure download link.
-- **Flask-based Web App**: Easy to deploy on any Flask-supported platform.
-- **Dynamic IP and Port Handling**: Allows users to specify their host IP and port dynamically or use automatic defaults.
-- **Simple and Clear Code Structure**: Modular functions for easy understanding and customization.
+_author: [planetwide](https://github.com/planetwiide)_
 
 ---
 
-## Table of Contents
+## ✨ description
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [File Routes](#file-routes)
-- [Contributing](#contributing)
-- [License](#license)
+**miamcloud** is a flask-based web app designed to make file management simple and accessible through a sleek web interface. easily upload, download, and manage files or images directly from your server. the app also integrates with **pystyle** for a visually appealing experience, including interactive ascii banners and a clean terminal display.
 
 ---
 
-## Installation
+## 🌟 features
 
-### Prerequisites
+- 🚀 **file uploading**: upload files effortlessly via the web interface.
+- 🎯 **file downloading**: securely retrieve files through a custom download link.
+- 🛠️ **flask-based**: works on any flask-supported platform, making deployment a breeze.
+- 🌐 **dynamic ip & port**: automatically detects ip and port, or set them manually if preferred.
+- 🧩 **clean code**: modular and easy-to-follow structure, perfect for customization.
 
-Before you start, ensure you have the following:
+---
 
-- Python 3.6 or higher
-- Flask
+## 📜 table of contents
+
+- [📥 installation](#installation)
+- [📖 usage](#usage)
+- [🗂️ file routes](#file-routes)
+- [🤝 contributing](#contributing)
+- [🐞 issues](#issues)
+- [📝 license](#license)
+
+---
+
+## 📥 installation
+
+### prerequisites
+
+before starting, make sure you have:
+
+- python 3.6+
+- flask
 - pystyle (`pip install pystyle`)
 
-### Steps
+### steps
 
-1. Clone the repository or download the project files:
+1. clone the repo or download the project files:
    ```bash
    git clone https://github.com/planetwiide/miamcloud.git
    cd miamcloud
    ```
 
-2. Install the required dependencies:
+2. install the dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
 ---
 
-## Usage
+## 🔧 usage
 
-1. Run the `miamcloud` script:
+1. start the app:
    ```bash
    python main.py
    ```
 
-2. The app will prompt you for an IP address and port. You can either press enter for automatic setup or specify your own values.
+2. input the ip and port when prompted, or hit enter to auto-configure.
 
-3. Once the server starts, visit the displayed URL (e.g., `http://127.0.0.1:8080`) in your browser to access the web interface.
-
----
-
-## File Routes
-
-- **GET /**: Returns the `index.html` page located in `front/`.
-- **POST /upload**: Handles file uploads.
-    - **Parameters**:
-      - `file`: The file to upload.
-      - `filename`: The name to save the file as.
-- **GET /get/<filename>**: Retrieves a file by its filename. If the file does not exist, it returns a default image.
-- **GET /images/<image>**: Retrieves an image from the `front/images/` folder. If the image does not exist, it returns a default image.
+3. open your browser and visit the displayed url (e.g., `http://127.0.0.1:8080`) to access the app.
 
 ---
 
-## Contributing
+## 🗂️ file routes
 
-If you'd like to contribute to this project, feel free to submit a pull request or open an issue.
-
-### Steps for Contribution:
-
-1. Fork the repository.
-2. Create a new branch for your feature/bug fix.
-3. Commit your changes.
-4. Push the changes to your fork.
-5. Submit a pull request.
+- **get /**: returns the `index.html` page from `front/`.
+- **post /upload**: handles file uploads.
+  - **params**:
+    - `file`: file to be uploaded.
+    - `filename`: custom name for the uploaded file.
+- **get /get/<filename>**: retrieves a file by its filename. returns a default image if the file isn't found.
+- **get /images/<image>**: fetches an image from `front/images/`. if the image doesn't exist, returns a default image.
 
 ---
 
-## License
+## 🤝 contributing
 
-This project is licensed under the MIT License.
+want to contribute? awesome! follow the steps below to get started:
+
+1. fork the repo.
+2. create a new branch for your feature/bug fix.
+3. commit your changes.
+4. push the changes to your fork.
+5. open a pull request.
+
+---
+
+## 🐞 issues
+
+found a bug or have a feature request? feel free to [open an issue](https://github.com/planetwiide/miamcloud/issues). we'll address it as soon as we can!
+
+---
+
+## 📝 license
+
+this project is licensed under the [mit license](https://opensource.org/licenses/MIT).
