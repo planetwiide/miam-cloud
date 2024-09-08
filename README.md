@@ -8,7 +8,7 @@
 ![📚](https://img.shields.io/github/license/planetwiide/miam-cloud)
 
 
-# 🌩️ miamcloud - v3.0.1
+# 🌩️ miamcloud - v3.0.2
 
 _author: [planetwide](https://github.com/planetwiide)_
 
