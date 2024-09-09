@@ -115,17 +115,17 @@ found a bug or have a feature request? feel free to [open an issue](https://gith
 
 this project was inspired by the ♉ [zodiac](https://github.com/billythegoat356/Zodiac) project by 🐐 [billythegoat365](https://github.com/billythegoat356/). while i drew inspiration from his work, i want to clarify that i did not copy it directly. all code has been rewritten from scratch, and i have implemented my own ideas and features. i plan to continue developing and maintaining this project, with new features on the way soon. thanks to billy for the initial inspiration!
 
+---
 
 ## 📝 license
 
 this project is licensed under the [mit license](https://opensource.org/licenses/MIT).
 
-## 🖼️ preview
-![image](https://github.com/user-attachments/assets/0c1f3a17-bf03-4151-9dfc-5b8081c6230c)
-![image](https://github.com/user-attachments/assets/50123a17-c79e-4ec5-8c14-ad13c343d1c0)
-![image](https://github.com/user-attachments/assets/b23206f1-9bd3-4c80-bac8-075c5299a0e8)
-![image](https://github.com/user-attachments/assets/cc5fa67d-9b9b-4fea-b742-62627ee26548)
-![image](https://github.com/user-attachments/assets/280074c9-4132-42e0-b893-99c0a40ea087)
+---
 
+## 🖼️ preview
+
+![image](https://github.com/user-attachments/assets/5c5b40d9-b397-49e5-a145-c01b4a9ac9f4)
+![image](https://github.com/user-attachments/assets/3a89a0c3-28e9-45a1-9908-487525e5993b)
 
 
