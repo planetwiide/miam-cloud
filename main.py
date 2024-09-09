@@ -111,8 +111,8 @@ def image_retrieval_route(image):
 # System configuration with Pystyle
 System.Clear()
 System.Size(160, 50)
-System.Title("MiamCloud")
-
+System.Title("🌩️ miamcloud 🌩️")
+login = os.getlogin()
 # Function to display the UI
 def display_ui():
     System.Clear()
@@ -133,12 +133,12 @@ def main():
     print(" ")
 
     # Input for IP and port
-    host = Write.Input("Input IP address (press enter to automate): ",
+    host = Write.Input(login + " ┃ Input IP address (press enter to automate): ",
                        Colors.blue_to_purple, interval=0.002) or local_ip
 
     print(" ")
 
-    port = Write.Input("Input port (press enter to automate): ",
+    port = Write.Input(login + " ┃ Input port (press enter to automate): ",
                        Colors.blue_to_purple, interval=0.002) or "8080"
     
     try:
@@ -148,7 +148,7 @@ def main():
         return
 
     print(" ")
-    Write.Input("Press enter to run the server ", Colors.blue_to_purple, interval=0.002)
+    Write.Input(login + " ┃ Press enter to run the server ", Colors.blue_to_purple, interval=0.002)
 
     # Generate and start the URL
     url = f"http://{host}:{port}/"
