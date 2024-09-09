@@ -1,4 +1,4 @@
-# MiamCloud - v3.0.1
+# MiamCloud - v3.0.3
 # Author: Planetwide
 # Description:
 # This script sets up a Flask-based web application named "MiamCloud" for uploading, downloading, and managing files.
@@ -9,6 +9,7 @@ from flask import Flask, request, send_file, redirect
 from pystyle import Colorate, Colors, System, Center, Write, Anime
 from webbrowser import open_new as open_browser
 from socket import gethostname, gethostbyname
+import os
 from os import listdir, chdir, name as os_name
 from os.path import isfile as file_exists
 
@@ -118,6 +119,8 @@ def display_ui():
     System.Clear()
     print("\n" * 2)
     print(Colorate.Diagonal(Colors.blue_to_purple, Center.XCenter(miamcloud_banner)))
+    print(" ")
+    print(Colorate.Diagonal(Colors.blue_to_purple, Center.XCenter("v3.0.3 - https://github.com/planetwiide/miam-cloud")))
     print("\n" * 5)
 
 # Banner animation display
@@ -133,29 +136,29 @@ def main():
     print(" ")
 
     # Input for IP and port
-    host = Write.Input(login + " ┃ Input IP address (press enter to automate): ",
-                       Colors.blue_to_purple, interval=0.002) or local_ip
+    host = Write.Input(login + " ┃ input IP address (press enter to automate): ",
+                       Colors.blue_to_purple, interval=0.003) or local_ip
 
     print(" ")
 
-    port = Write.Input(login + " ┃ Input port (press enter to automate): ",
-                       Colors.blue_to_purple, interval=0.002) or "8080"
+    port = Write.Input(login + " ┃ input port (press enter to automate): ",
+                       Colors.blue_to_purple, interval=0.003) or "8080"
     
     try:
         port = int(port)
     except ValueError:
-        Colorate.Error("Invalid port; port should be an integer.")
+        Colorate.Error(login + " ┃ invalid port; port should be an integer.")
         return
 
     print(" ")
-    Write.Input(login + " ┃ Press enter to run the server ", Colors.blue_to_purple, interval=0.002)
+    Write.Input(login + " ┃ press enter to run the server ", Colors.blue_to_purple, interval=0.003)
 
     # Generate and start the URL
     url = f"http://{host}:{port}/"
     open_browser(url)
     
     display_ui()
-    print(Colorate.Vertical(Colors.blue_to_purple, f"   Running on: {url}"))
+    print(Colorate.Vertical(Colors.blue_to_purple, f" ┃ running on: {url}"))
     print(Colors.green, end='')
 
     start_flask_app(host=host, port=port)
