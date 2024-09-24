@@ -8,7 +8,7 @@
 ![📚](https://img.shields.io/github/license/planetwiide/miam-cloud)
 
 
-# 🌩️ miamcloud - v4.0.0
+# 🌩️ miamcloud - v4.0.1
 
 _author: [planetwide](https://github.com/planetwiide)_
 
@@ -18,7 +18,7 @@ _author: [planetwide](https://github.com/planetwiide)_
 
 **miamcloud** is a flask-based web app designed to make file management simple and accessible through a sleek web interface. easily upload, download, and manage files or images directly from your server. the app also integrates with **pystyle** for a visually appealing experience, including interactive ascii banners and a clean terminal display.
 
-_**UPDATE: added a login via a db and an app to manage users!**_
+_**UPDATE: added a login page for security and logs via webhook (discord)**_
 
 ---
 
@@ -52,8 +52,7 @@ _**UPDATE: added a login via a db and an app to manage users!**_
 before starting, make sure you have:
 
 - python 3.6+
-- flask
-- pystyle (`pip install pystyle`)
+- depandancies (`pip install Flask pystyle PyYAML requests`)
 
 ### steps
 
