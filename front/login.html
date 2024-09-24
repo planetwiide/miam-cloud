@@ -7,373 +7,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>꒰ miam " login ꒱</title>
     <link rel="icon" href="images/logo.png">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
     <header>
         <nav>
             <div class="header_imgs">
-                <a href="https://planetwide.xyz/"><img src="images/planetwide.png"></a>
-                <a href="https://github.io/planetwiide/miam-cloud/"><img src="images/miamcloud.png"></a>
+                <a href="https://github.com/planetwiide/"><img src="images/planetwide.png" alt="Planetwide Logo"></a>
+                <a href="https://github.com/planetwiide/miam-cloud/"><img src="images/miamcloud.png" alt="Miam Cloud Logo"></a>
             </div>
         </nav>
     </header>
     <h1 class="mcloud">login</h1>
     <form class="content" action="/login" method="post">
-    <input class="login" type="text" name="username" id="login" placeholder="input username" value="">
-    <input class="login" type="password" name="password" id="login" placeholder="input password" value="">
-    <input class="btn btn-default" type="submit" value="login">
-</form>
+        <input class="login" type="text" name="username" placeholder="input username" required>
+        <input class="login" type="password" name="password" placeholder="input password" required>
+        <input class="btn btn-default" type="submit" value="login">
+    </form>
     <footer>
         🌩️ miam cloud © <a class="links" href="https://github.com/planetwiide">planetwide</a>
     </footer>
+    
+    <style>
+        /* Reset */
+        *, *::before, *::after {
+            padding: 0;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-image: linear-gradient(4deg, #0f0c15, #483752);
+            color: #fff;
+            font-family: "Poppins", sans-serif;
+            min-height: 100vh;
+        }
+
+        footer {
+            font-size: 13.5px;
+            color: #ccc;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            height: 30px;
+            width: 100%;
+        }
+
+        footer a {
+            color: rgb(255, 134, 251);
+        }
+
+        header nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+        }
+
+        header nav .header_imgs img {
+            width: 70px;
+            height: 70px;
+            margin-right: 15px;
+            border-radius: 100%;
+            border: 3px solid #e3ace393;
+            box-shadow: 0 0 15px #e3ace393;
+        }
+
+        .mcloud {
+            text-align: center;
+            margin-top: 100px;
+            font-size: 70px;
+        }
+
+        form.content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 75px;
+        }
+        form.content input.btn {
+            background: #a767a1;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            width: 100px;
+            height: 40px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        form.content input.btn:hover {
+            background: #ff7fbd;
+            transform: scale(1.05);
+        }
+
+        form.content input.btn:active {
+            transform: scale(0.95);
+        }
+        form.content input.login {
+            color: white;
+            background: #101013;
+            border: none;
+            padding: 5px 10px;
+            width: 270px;
+            height: 30px;
+            margin-top: 10px;
+            border-radius: 25px;
+            transition: 0.5s;
+        }
+
+        form.content input.login:hover {
+            background: #a767a1;
+        }
+
+        form.content input.login:focus {
+            width: 320px;
+            transition: 2s;
+        }
+
+        form.content button {
+            background: #a767a1;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            width: 100px;
+            height: 40px;
+            transition: 0.3s all;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header nav {
+                flex-direction: column;
+                padding: 10px 20px;
+            }
+
+            header nav .header_imgs img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .mcloud {
+                margin-top: 50px;
+                font-size: 50px;
+            }
+
+            form.content {
+                margin-top: 50px;
+            }
+
+            form.content input.login {
+                width: 100%;
+                font-size: 16px;
+            }
+
+            form.content input.login:focus {
+                width: 100%;
+            }
+
+            form.content button {
+                width: 80%;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header nav {
+                padding: 5px 10px;
+            }
+
+            header nav .header_imgs img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .mcloud {
+                margin-top: 30px;
+                font-size: 40px;
+            }
+
+            form.content {
+                margin-top: 30px;
+            }
+
+            form.content input.login {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            form.content button {
+                width: 100%;
+                font-size: 14px;
+            }
+        }
+    </style>
 </body>
 
-
-
-<style>
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-/* Reset */
-
-*, *::before, *::after {
-    padding: 0;
-    margin: 0;
-    scroll-behavior: smooth;
-}
-body {
-    background-image: linear-gradient(4deg, #0f0c15, #483752);
-    color: #fff;
-    font-family: "Poppins", sans-serif;
-    min-height: 100vh;
-}
-footer {
-    font-family: 'Poppins', sans-serif;
-    opacity: 1;
-    font-size: 13.5px;
-    width: 100%;
-    color: #ccc;
-    text-align: center;
-    padding: 20px 0px 10px 0px;
-    margin-bottom: 5px;
-    position: fixed;
-    left: 0px;
-    bottom: 0px;
-    height: 30px;
-    width: 100%;
-}
-
-footer a {
-    color: rgb(255, 134, 251);
-}
-
-header nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 40px;
-}
-
-header nav .header_links ul {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-}
-
-header nav .header_links ul li, section.main ul li {
-    list-style-type: none;
-}
-
-header nav .header_links ul li a {
-    outline: none;
-    text-decoration: none;
-    color: #a6a8b8;
-    padding: 5px 12px;
-    transition: 0.3s all;
-    font-size: 15px;
-}
-
-header nav .header_links ul li a:hover {
-    color: rgb(0, 0, 0);
-}
-
-header nav .header_imgs img {
-    width: 70px;
-    height: 70px;
-    margin-right: 15px;
-    border-radius: 100%;
-    border: 3px solid #e3ace393;
-    box-shadow: 0 0 15px #e3ace393;
-}
-
-wlogo {
-    width: 100px;
-    height: 100px;
-}
-
-
-.links {
-	text-decoration-color: transparent;
-}
-
-
-
-
-.mcloud {
-    text-align: center;
-    margin-top: 100px;
-    font-size: 70px;
-}
-
-.mcloud a {
-    color: white;
-    text-decoration-color: transparent;
-}
-
-
-form.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-top: 75px;
-}
-
-form.content input.file_upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-}
-
-form.content input.login:hover {
-    transition: 0.3s;
-    background: #a767a1;
-}
-
-form.content input.login,  form.content input.file_uploaded{
-    color: white;
-    background: #101013;
-    border-style: none;
-    outline: none;
-    padding: 5px 5px 5px 10px;
-    width: 270px;
-    height: 30px;
-    margin-top: 10px;
-    border-radius: 25px;
-    transition: 0.5s;
-}
-
-form.content input.login:focus {
-    transition: 2s;
-    width: 320px;
-}
-form.content button:hover {
-    background: #a767a1;
-    transition: 0.3s all;
-}
-
-.fileUpload {
-    position: relative;
-    overflow: hidden;
-    margin: 10px;
-    border-radius: 50px;
-    transition: 0.5s;
-}
-
-.fileUpload span:hover {
-    transition: 0.3s;
-    background: #a767a1;
-}
-
-
-form.content button {
-    background: #a767a1;
-    color: white;
-    border-style: none;
-    border-radius: 20px;
-    width: 100px;
-    height: 40px;
-    transition: 0.3s all;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.fileUpload input.upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-}
-
-.fileUpload span {
-    color: #000000;
-    background: #fab8ff;
-    border-style: none;
-    outline: none;
-    padding: 10px 0 5px;
-    width: 270px;
-    height: 30px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 7px;
-}
-
-.preview {
-    margin-top: 20px;
-    width: 100px;
-}
-
-.search {
-    color: white;
-    background: #101013;
-    border-style: none;
-    outline: none;
-    padding: 5px 5px 5px 10px;
-    width: 50px;
-    height: 30px;
-    margin-top: 10px;
-    border-radius: 25px;
-    transition: 0.5s;
-}
-
-.search:hover {
-    transition: 0.3s;
-    background: #131316;
-}
-
-.search:focus {
-    transition: 1s;
-    width: 280px;
-}
-
-.download {
-    background: #ff96fc;
-    color: white;
-    border-style: none;
-    border-radius: 7px;
-    width: 50px;
-    height: 50px;
-    transition: 0.3s all;
-    cursor: pointer;
-    margin-left: 40px;
-    border-radius: 100%;
-}
-.download:hover {
-    background: #a767a1;
-    transition: 0.3s all;
-}
-
-/* Responsive     */
-@media (max-width: 768px) {
-    header nav {
-        flex-direction: column;
-        padding: 10px 20px;
-    }
-
-    header nav .header_imgs img {
-        width: 50px;
-        height: 50px;
-    }
-
-    .mcloud {
-        margin-top: 50px;
-        font-size: 50px;
-    }
-
-    form.content {
-        margin-top: 50px;
-    }
-
-    form.content input.login, form.content input.file_uploaded, .search {
-        width: 100%;
-        font-size: 16px;
-    }
-
-    form.content input.login:focus, .search:focus {
-        width: 100%;
-    }
-
-    form.content button {
-        width: 80%;
-        font-size: 16px;
-    }
-
-    .fileUpload span {
-        width: 100%;
-        font-size: 16px;
-    }
-
-    .download {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    header nav {
-        padding: 5px 10px;
-    }
-
-    header nav .header_imgs img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .mcloud {
-        margin-top: 30px;
-        font-size: 40px;
-    }
-
-    form.content {
-        margin-top: 30px;
-    }
-
-    form.content input.login, form.content input.file_uploaded, .search {
-        width: 100%;
-        font-size: 14px;
-    }
-
-    form.content input.login:focus, .search:focus {
-        width: 100%;
-    }
-
-    form.content button {
-        width: 100%;
-        font-size: 14px;
-    }
-
-    .fileUpload span {
-        width: 100%;
-        font-size: 14px;
-    }
-
-    .download {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
-    }
-}
-
-
-</style>
-
 </html>
-
