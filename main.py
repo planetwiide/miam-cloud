@@ -35,7 +35,7 @@ d88P"    888 d88""88b 888  888 d88" 888
 888      888 888  888 888  888 888  888 
 Y88b.    888 Y88..88P Y88b 888 Y88b 888 
  "Y8888P 888  "Y88P"   "Y88888  "Y88888 
-       v3.0.3 - @planetwide
+       4.0.0 - @planetwide
 """
 
 # ASCII banner with image
@@ -174,7 +174,7 @@ def display_ui():
     print("\n" * 2)
     print(Colorate.Diagonal(Colors.blue_to_purple, Center.XCenter(miamcloud_banner)))
     print(" ")
-    print(Colorate.Diagonal(Colors.blue_to_purple, Center.XCenter("v3.0.3 - https://github.com/planetwiide/miam-cloud")))
+    print(Colorate.Diagonal(Colors.blue_to_purple, Center.XCenter("v4.0.0 - github.com/planetwiide/miam-cloud")))
     print("\n" * 5)
 
 # Banner animation display
