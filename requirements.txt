@@ -1,2 +1,5 @@
-pystyle
 flask
+pystyle
+PyYAML
+yaml
+requests
