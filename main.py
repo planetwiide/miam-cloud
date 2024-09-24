@@ -212,8 +212,7 @@ def main():
     Write.Input(login + " ┃ press enter to run the server ", Colors.blue_to_purple, interval=0.003)
 
     # Generate the URL and start the Flask server
-    url = f"{login} ┃ http://{host}:{port}/"
-    open_browser(url)
+    url = f"http://{host}:{port}/"
     
     display_ui()
     print(Colorate.Vertical(Colors.blue_to_purple, f"{login} ┃ running on: {url}"))
