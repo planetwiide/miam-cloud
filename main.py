@@ -1,4 +1,4 @@
-# MiamCloud - v4.0.0
+# MiamCloud - v4.0.1
 # Author: Planetwide
 # Description:
 # This script sets up a Flask-based web application named "MiamCloud" for 
@@ -15,6 +15,32 @@ import yaml
 from os import listdir, chdir, name as os_name
 from os.path import isfile as file_exists
 import secrets
+import requests
+import atexit
+import json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Discord embed webhook logs URL to set, input "none" if no logs wanted. none is by default.
+
+webhook_url = "none"
 
 # ASCII banner for MiamCloud
 miamcloud_banner = """
@@ -35,7 +61,7 @@ d88P"    888 d88""88b 888  888 d88" 888
 888      888 888  888 888  888 888  888 
 Y88b.    888 Y88..88P Y88b 888 Y88b 888 
  "Y8888P 888  "Y88P"   "Y88888  "Y88888 
-       4.0.0 - @planetwide
+       4.0.1 - @planetwide
 """
 
 # ASCII banner with image
@@ -55,6 +81,7 @@ banner_image = '''
 '''
 
 # Flask application initialization with a dynamically generated secret key for session management
+
 app = Flask("MiamCloud")
 app.secret_key = secrets.token_urlsafe(16)
 
@@ -63,6 +90,38 @@ def read_file_contents(filename: str):
     """Read the contents of a file and return it as a string."""
     with open(filename, 'r', encoding='utf-8') as file:
         return file.read()
+
+# Function for logging events via a discord webhook
+def send_webhook_log(event_title, description, color):
+    if webhook_url == "none":
+        print("Webhook URL is set to 'none'. No embed will be sent.")
+        return
+
+    embed = {
+        "title": event_title,
+        "description": description,
+        "color": color,
+        "footer": {
+            "text": "miamcloud - @planetwide"
+        },
+        "image": {
+            "url": "https://i.postimg.cc/bJJ02gkg/logo.png"
+        }
+    }
+    data = {
+        "embeds": [embed]
+    }
+
+    headers = {"Content-Type": "application/json"}
+
+    try:
+        response = requests.post(webhook_url, json=data, headers=headers)
+        if response.status_code != 204:
+            print(f"Error sending webhook log: {response.status_code}, {response.text}")
+    except Exception as e:
+        print(f"Error sending webhook log: {e}")
+
+
 
 # Function for authenticating a user by checking username and password in users.yml
 def auth(username, pwd):
@@ -73,9 +132,11 @@ def auth(username, pwd):
     for user in users['users']:
         if user['username'] == username and user['password'] == pwd:
             print("Authenticated:", username)
+            send_webhook_log("✅ Login Success", f"_ _\n> User {username}:||{pwd}|| logged in successfully.\n_ _\n_ _", 8311585)
             return True
             
     print("Failed to Authenticate:", username)
+    send_webhook_log("❌ Login Failed", f"_ _\n> User {username}:||{pwd}|| failed to log in.\n_ _\n_ _", 15158332)
     return False
 
 # Route for login page and authentication handling
@@ -93,6 +154,7 @@ def login_route():
             session['authenticated'] = True
             session.modified = True  # Mark session as changed
             return redirect(next_url)
+        
         
         # Redirect back to the login page if authentication fails
         return redirect(url_for('login_route'))
@@ -121,11 +183,13 @@ def upload_handler():
         uploaded_file = request.files.get('file')
         if uploaded_file:
             uploaded_file.save(f'files/{filename}')
+            send_webhook_log("⏫ File Upload", f"_ _\n> File {filename} was uploaded successfully.\n_ _\n_ _", 3447003)
             return redirect('/')
         
         return response_with_status('error, no file uploaded.')
         
     except Exception as error:
+        send_webhook_log("❌ File Upload Error", f"_ _\n> Error uploading file {filename}: `{str(error)}`\n_ _\n_ _", 15158332)
         return response_with_status(f'error: {str(error)}')
 
 # Route to retrieve a file by filename
@@ -135,7 +199,10 @@ def file_retrieval_route(filename):
     file_path = f'files/{filename}'
     
     if file_exists(file_path):
+        
         return send_file(file_path, as_attachment=True)
+    
+    send_webhook_log("⏬ File Download", f"_ _\n> File ""{filename}"" was downloaded.\n_ _\n_ _", 10181046)
     
     # Attempt to match filename without extension
     for file in listdir('files'):
@@ -174,7 +241,7 @@ def display_ui():
     print("\n" * 2)
     print(Colorate.Diagonal(Colors.blue_to_purple, Center.XCenter(miamcloud_banner)))
     print(" ")
-    print(Colorate.Diagonal(Colors.blue_to_purple, Center.XCenter("v4.0.0 - github.com/planetwiide/miam-cloud")))
+    print(Colorate.Diagonal(Colors.blue_to_purple, Center.XCenter("v4.0.1 - github.com/planetwiide/miam-cloud")))
     print("\n" * 5)
 
 # Banner animation display
@@ -190,7 +257,7 @@ def start_flask_app(host: str, port: int):
 def main():
     """Main function to initialize and run the MiamCloud server."""
     display_ui()
-
+    send_webhook_log("✅ App Start", "_ _\n> MiamCloud has started successfully.\n_ _\n_ _", 3066993)
     # Retrieve hostname and local IP address
     hostname, local_ip = gethostname(), gethostbyname(gethostname())
     print(" ")
@@ -219,6 +286,13 @@ def main():
     print(Colors.green, end='')
 
     start_flask_app(host=host, port=port)
+
+def log_app_quit():
+    """Log the app quit event."""
+    send_webhook_log("❌ App Quit", "_ _\n> MiamCloud has been terminated.\n_ _\n_ _", 15158332)
+
+# Register the quit event without calling the function (was providing a argument error)
+atexit.register(log_app_quit)
 
 # Entry point to run the application
 if __name__ == '__main__':
