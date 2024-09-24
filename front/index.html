@@ -7,34 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>꒰ miam " cloud ꒱</title>
     <link rel="icon" href="images/logo.png">
-
 </head>
 
 <body>
 
+    <!-- Header Section -->
     <header>
         <nav>
             <div class="header_imgs">
-                
-                <a href="https://planetwide.xyz/"><img src="images/planetwide.png"></a>
-                
-                <a href="https://github.io/planetwiide/miam-cloud/"><img src="images/miamcloud.png"></a>
+                <!-- Logo Links -->
+                <a href="https://github.com/planetwiide/">
+                    <img src="images/planetwide.png" alt="Planetwide Logo">
+                </a>
+                <a href="https://github.com/planetwiide/miam-cloud/">
+                    <img src="images/miamcloud.png" alt="Miam Cloud Logo">
+                </a>
             </div>
-            
-        
-
-
 
             <div class="header_links">
+                <!-- Search Bar and Download Button -->
                 <input class="search" type="text" name="search" id="search" placeholder="search">
-                <button class="download" onclick="download()"><img src="images/search.jpg" width="20", height="20"></button>
+                <button class="download" onclick="download()">
+                    <img src="images/search.jpg" width="20" height="20" alt="Search Icon">
+                </button>
             </div>
         </nav>
     </header>
+
     <h1 class="mcloud">miam cloud</h1>
-    
 
-
+    <!-- Main Content Section -->
     <section class="content">
         <div class="fileUpload btn btn-primary">
             <span class="select_a_file" id="select_file">select a file</span>
@@ -42,67 +44,73 @@
         </div>
         <input disabled class="file_uploaded" type="text" name="file_sent" id="file_sent" placeholder="no file selected">
         <input class="filename" type="text" name="filename" id="filename" placeholder="choose a name">
-
         <button onclick="send()">send</button>
 
-
         <script>
-
+            // Update the filename input when a file is selected
             document.getElementById("file").onchange = function() {
-                var filename = this.value.split('\\')
+                var filename = this.value.split('\\');
                 document.getElementById("file_sent").value = filename[filename.length - 1];
             };
 
+            // Function to send the file to the server
             async function send() {
-                const file = document.getElementById("file").files[0];
-                var _filename = document.getElementById("file").value;
-                var filename = document.getElementById("filename").value;
+                const file = document.getElementById("file").files[0]; // Get the selected file
+                var _filename = document.getElementById("file").value; // Get the original filename
+                var filename = document.getElementById("filename").value; // Get the custom filename
 
-
+                // Validate file selection
                 if (file == null) {
                     document.getElementById("select_file").innerHTML = "select a file first";
                     document.getElementById("select_file").style.color = "red";
                     return;
                 }
 
+                // Validate custom filename
                 if (filename == "") {
                     document.getElementById("select_file").innerHTML = "name the file first";
                     document.getElementById("select_file").style.color = "red";
                     return;
                 }
 
+                // Append .txt if the file does not have an extension
                 if (_filename.includes('.') == false) {
                     _filename = _filename + '.txt';
                 }
 
                 _filename = _filename.split('.');
-                var filename = filename + '.' + _filename[_filename.length - 1];
+                filename = filename + '.' + _filename[_filename.length - 1]; // Create new filename with extension
 
+                // Prepare FormData for the file upload
                 let formData = new FormData();
                 var myRequest = new Request('/upload?filename=' + filename);
-                
                 formData.append("file", file);
+
+                // Send the file using fetch API
                 await fetch(myRequest, { method: "POST", body: formData });
 
-                document.getElementById("select_file").innerHTML = "Envoyé!";
+                // Update UI after successful upload
+                document.getElementById("select_file").innerHTML = "Sent!";
                 document.getElementById("select_file").style.color = "green";
-                setTimeout(() => { window.location.reload(); }, 1000);
+                setTimeout(() => { window.location.reload(); }, 1000); // Reload the page after 1 second
             }
+
+            // Function to handle the download action
             function download() {
                 var search = document.getElementById("search").value;
 
+                // Default search term if the input is empty
                 if (search == "") {
-                    var search = "miamcloud";
+                    search = "miamcloud";
                 }
 
-                document.getElementById("search").value = "";
-                window.location.replace('/get/' + search)
+                document.getElementById("search").value = ""; // Clear the search input
+                window.location.replace('/get/' + search); // Redirect to download URL
             }
-
-
         </script>
     </section>
 
+    <!-- Footer Section -->
     <footer>
         🌩️ miam cloud © <a class="links" href="https://github.com/planetwiide">planetwide</a>
     </footer>
@@ -111,356 +119,345 @@
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-/* Reset */
-
+/* Reset padding and margin for all elements and set smooth scrolling */
 *, *::before, *::after {
     padding: 0;
     margin: 0;
     scroll-behavior: smooth;
 }
 
+/* Body styles */
 body {
-    background-image: linear-gradient(4deg, #0f0c15, #483752);
-    color: #fff;
-    font-family: "Poppins", sans-serif;
-    min-height: 100vh;
+    background-image: linear-gradient(4deg, #0f0c15, #483752); /* Background gradient */
+    color: #fff; /* Text color */
+    font-family: "Poppins", sans-serif; /* Font family */
+    min-height: 100vh; /* Minimum height for the body */
 }
 
-
-
-
+/* Footer styles */
 footer {
-    font-family: 'Poppins', sans-serif;
-    opacity: 1;
-    font-size: 13.5px;
-    width: 100%;
-    color: #ccc;
-    text-align: center;
-    padding: 20px 0px 10px 0px;
-    margin-bottom: 5px;
-    position: fixed;
-    left: 0px;
-    bottom: 0px;
-    height: 30px;
-    width: 100%;
+    font-family: 'Poppins', sans-serif; /* Font for footer */
+    opacity: 1; /* Fully opaque */
+    font-size: 13.5px; /* Font size */
+    color: #ccc; /* Text color */
+    text-align: center; /* Centered text */
+    padding: 20px 0 10px; /* Padding */
+    margin-bottom: 5px; /* Bottom margin */
+    position: fixed; /* Fixed positioning */
+    left: 0; /* Align to left */
+    bottom: 0; /* Align to bottom */
+    height: 30px; /* Height */
+    width: 100%; /* Full width */
 }
 
+/* Footer link styles */
 footer a {
-    color: rgb(255, 134, 251);
+    color: rgb(255, 134, 251); /* Link color */
 }
 
+/* Navigation styles */
 header nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 40px;
+    display: flex; /* Flexbox layout */
+    flex-direction: row; /* Row direction */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between items */
+    padding: 20px 40px; /* Padding */
 }
 
+/* Header link styles */
 header nav .header_links ul {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    display: flex; /* Flexbox layout for links */
+    flex-wrap: wrap; /* Allow wrapping */
+    flex-direction: row; /* Row direction */
 }
 
-header nav .header_links ul li, section.main ul li {
-    list-style-type: none;
+header nav .header_links ul li,
+section.main ul li {
+    list-style-type: none; /* No list style */
 }
 
+/* Header link anchor styles */
 header nav .header_links ul li a {
-    outline: none;
-    text-decoration: none;
-    color: #a6a8b8;
-    padding: 5px 12px;
-    transition: 0.3s all;
-    font-size: 15px;
+    outline: none; /* No outline */
+    text-decoration: none; /* No underline */
+    color: #a6a8b8; /* Link color */
+    padding: 5px 12px; /* Padding */
+    transition: 0.3s all; /* Transition for hover effect */
+    font-size: 15px; /* Font size */
 }
 
+/* Header link hover effect */
 header nav .header_links ul li a:hover {
-    color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0); /* Change color on hover */
 }
 
+/* Header image styles */
 header nav .header_imgs img {
-    width: 70px;
-    height: 70px;
-    margin-right: 15px;
-    border-radius: 100%;
-    border: 3px solid #e3ace393;
-    box-shadow: 0 0 15px #e3ace393;
+    width: 70px; /* Image width */
+    height: 70px; /* Image height */
+    margin-right: 15px; /* Right margin */
+    border-radius: 100%; /* Circular image */
+    border: 3px solid #e3ace393; /* Border style */
+    box-shadow: 0 0 15px #e3ace393; /* Shadow effect */
 }
 
+/* Logo styles */
 wlogo {
-    width: 100px;
-    height: 100px;
+    width: 100px; /* Logo width */
+    height: 100px; /* Logo height */
 }
 
-
+/* Link styles */
 .links {
-	text-decoration-color: transparent;
+    text-decoration-color: transparent; /* Transparent text decoration */
 }
 
-
-
-
+/* Main cloud styles */
 .mcloud {
-    text-align: center;
-    margin-top: 100px;
-    font-size: 70px;
+    text-align: center; /* Centered text */
+    margin-top: 100px; /* Top margin */
+    font-size: 70px; /* Font size */
 }
 
+/* Cloud link styles */
 .mcloud a {
-    color: white;
-    text-decoration-color: transparent;
+    color: white; /* Link color */
+    text-decoration-color: transparent; /* Transparent text decoration */
 }
 
-
+/* Content section styles */
 section.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-top: 75px;
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Column direction */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    text-align: center; /* Centered text */
+    margin-top: 75px; /* Top margin */
 }
 
+/* File upload input styles */
 section.content input.file_upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
+    position: absolute; /* Absolute positioning */
+    top: 0; /* Align to top */
+    right: 0; /* Align to right */
+    margin: 0; /* No margin */
+    padding: 0; /* No padding */
+    font-size: 20px; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+    opacity: 0; /* Invisible */
+    filter: alpha(opacity=0); /* For older IE */
 }
 
+/* Filename input hover effect */
 section.content input.filename:hover {
-    transition: 0.3s;
-    background: #a767a1;
+    transition: 0.3s; /* Transition effect */
+    background: #a767a1; /* Background color on hover */
 }
 
-section.content input.filename,  section.content input.file_uploaded{
-    color: white;
-    background: #101013;
-    border-style: none;
-    outline: none;
-    padding: 5px 5px 5px 10px;
-    width: 270px;
-    height: 30px;
-    margin-top: 10px;
-    border-radius: 25px;
-    transition: 0.5s;
+/* Filename and uploaded file input styles */
+section.content input.filename,
+section.content input.file_uploaded {
+    color: white; /* Text color */
+    background: #101013; /* Background color */
+    border-style: none; /* No border */
+    outline: none; /* No outline */
+    padding: 5px 5px 5px 10px; /* Padding */
+    width: 270px; /* Width */
+    height: 30px; /* Height */
+    margin-top: 10px; /* Top margin */
+    border-radius: 25px; /* Rounded corners */
+    transition: 0.5s; /* Transition effect */
 }
 
+/* Filename input focus effect */
 section.content input.filename:focus {
-    transition: 2s;
-    width: 320px;
+    transition: 2s; /* Longer transition */
+    width: 320px; /* Increased width on focus */
 }
 
-
-
-
-
-
+/* Button hover effect */
 section.content button:hover {
-    background: #a767a1;
-    transition: 0.3s all;
+    background: #a767a1; /* Background color on hover */
+    transition: 0.3s all; /* Transition effect */
 }
 
+/* File upload button styles */
 .fileUpload {
-    position: relative;
-    overflow: hidden;
-    margin: 10px;
-    border-radius: 50px;
-    transition: 0.5s;
+    position: relative; /* Relative positioning */
+    overflow: hidden; /* Hide overflow */
+    margin: 10px; /* Margin */
+    border-radius: 50px; /* Rounded corners */
+    transition: 0.5s; /* Transition effect */
 }
 
+/* File upload button span hover effect */
 .fileUpload span:hover {
-    transition: 0.3s;
-    background: #a767a1;
+    transition: 0.3s; /* Transition effect */
+    background: #a767a1; /* Background color on hover */
 }
 
-
+/* Button styles */
 section.content button {
-    background: #a767a1;
-    color: white;
-    border-style: none;
-    border-radius: 20px;
-    width: 100px;
-    height: 40px;
-    transition: 0.3s all;
-    cursor: pointer;
-    margin-top: 20px;
+    background: #a767a1; /* Background color */
+    color: white; /* Text color */
+    border-style: none; /* No border */
+    border-radius: 20px; /* Rounded corners */
+    width: 100px; /* Width */
+    height: 40px; /* Height */
+    transition: 0.3s all; /* Transition effect */
+    cursor: pointer; /* Pointer cursor */
+    margin-top: 20px; /* Top margin */
 }
 
+/* File upload input within the button */
 .fileUpload input.upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
+    position: absolute; /* Absolute positioning */
+    top: 0; /* Align to top */
+    right: 0; /* Align to right */
+    margin: 0; /* No margin */
+    padding: 0; /* No padding */
+    font-size: 20px; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+    opacity: 0; /* Invisible */
+    filter: alpha(opacity=0); /* For older IE */
 }
 
+/* File upload span styles */
 .fileUpload span {
-    color: #000000;
-    background: #fab8ff;
-    border-style: none;
-    outline: none;
-    padding: 10px 0 5px;
-    width: 270px;
-    height: 30px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 7px;
+    color: #000000; /* Text color */
+    background: #fab8ff; /* Background color */
+    border-style: none; /* No border */
+    outline: none; /* No outline */
+    padding: 10px 0 5px; /* Padding */
+    width: 270px; /* Width */
+    height: 30px; /* Height */
+    display: flex; /* Flexbox layout */
+    text-align: center; /* Centered text */
+    justify-content: center; /* Center items */
+    cursor: pointer; /* Pointer cursor */
+    border-radius: 7px; /* Rounded corners */
 }
 
+/* Preview styles */
 .preview {
-    margin-top: 20px;
-    width: 100px;
+    margin-top: 20px; /* Top margin */
+    width: 100px; /* Width */
 }
 
+/* Search input styles */
 .search {
-    color: white;
-    background: #101013;
-    border-style: none;
-    outline: none;
-    padding: 5px 5px 5px 10px;
-    width: 50px;
-    height: 30px;
-    margin-top: 10px;
-    border-radius: 25px;
-    transition: 0.5s;
+    color: white; /* Text color */
+    background: #101013; /* Background color */
+    border-style: none; /* No border */
+    outline: none; /* No outline */
+    padding: 5px 5px 5px 10px; /* Padding */
+    width: 50px; /* Width */
+    height: 30px; /* Height */
+    margin-top: 10px; /* Top margin */
+    border-radius: 25px; /* Rounded corners */
+    transition: 0.5s; /* Transition effect */
 }
 
+/* Search input hover effect */
 .search:hover {
-    transition: 0.3s;
-    background: #131316;
+    transition: 0.3s; /* Transition effect */
+    background: #131316; /* Background color on hover */
 }
 
+/* Search input focus effect */
 .search:focus {
-    transition: 1s;
-    width: 280px;
+    transition: 1s; /* Longer transition */
+    width: 280px; /* Increased width on focus */
 }
 
+/* Download button styles */
 .download {
-    background: #ff96fc;
-    color: white;
-    border-style: none;
-    border-radius: 7px;
-    width: 50px;
-    height: 50px;
-    transition: 0.3s all;
-    cursor: pointer;
-    margin-left: 40px;
-    border-radius: 100%;
+    background: #ff96fc; /* Background color */
+    color: white; /* Text color */
+    border-style: none; /* No border */
+    border-radius: 7px; /* Rounded corners */
+    width: 50px; /* Width */
+    height: 50px; /* Height */
+    transition: 0.3s all; /* Transition effect */
+    cursor: pointer; /* Pointer cursor */
+    margin-left: 40px; /* Left margin */
+    border-radius: 100%; /* Circular button */
 }
+
+/* Download button hover effect */
 .download:hover {
-    background: #a767a1;
-    transition: 0.3s all;
+    background: #a767a1; /* Background color on hover */
+    transition: 0.3s all; /* Transition effect */
 }
 
-/* Responsive     */
-@media (max-width: 768px) {
-    header nav {
-        flex-direction: column;
-        padding: 10px 20px;
-    }
-
-    header nav .header_imgs img {
-        width: 50px;
-        height: 50px;
-    }
-
-    .mcloud {
-        margin-top: 50px;
-        font-size: 50px;
-    }
-
-    section.content {
-        margin-top: 50px;
-    }
-
-    section.content input.filename, section.content input.file_uploaded, .search {
-        width: 100%;
-        font-size: 16px;
-    }
-
-    section.content input.filename:focus, .search:focus {
-        width: 100%;
-    }
-
-    section.content button {
-        width: 80%;
-        font-size: 16px;
-    }
-
-    .fileUpload span {
-        width: 100%;
-        font-size: 16px;
-    }
-
-    .download {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
+/* Middle section styles */
+.middle {
+    display: flex; /* Flexbox layout */
+    justify-content: center; /* Center items */
+    margin-top: 50px; /* Top margin */
 }
 
-@media (max-width: 480px) {
-    header nav {
-        padding: 5px 10px;
-    }
-
-    header nav .header_imgs img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .mcloud {
-        margin-top: 30px;
-        font-size: 40px;
-    }
-
-    section.content {
-        margin-top: 30px;
-    }
-
-    section.content input.filename, section.content input.file_uploaded, .search {
-        width: 100%;
-        font-size: 14px;
-    }
-
-    section.content input.filename:focus, .search:focus {
-        width: 100%;
-    }
-
-    section.content button {
-        width: 100%;
-        font-size: 14px;
-    }
-
-    .fileUpload span {
-        width: 100%;
-        font-size: 14px;
-    }
-
-    .download {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
-    }
+/* Middle item styles */
+.middle > div {
+    margin: 20px; /* Margin */
+    padding: 10px; /* Padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); /* Shadow effect */
+    text-align: center; /* Centered text */
+    transition: 0.3s; /* Transition effect */
+    background: #171c24; /* Background color */
 }
 
+/* Middle item hover effect */
+.middle > div:hover {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.5); /* Shadow effect on hover */
+}
 
+/* Main section styles */
+main {
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Column direction */
+    align-items: center; /* Center items */
+    justify-content: center; /* Center items vertically */
+    margin: 20px; /* Margin */
+}
+
+/* Section styles */
+section {
+    margin: 10px 0; /* Vertical margin */
+}
+
+/* Article styles */
+article {
+    margin-top: 20px; /* Top margin */
+    text-align: center; /* Centered text */
+}
+
+/* Section header styles */
+section h2 {
+    margin-bottom: 10px; /* Bottom margin */
+}
+
+/* Grid container styles */
+.grid-container {
+    display: grid; /* Grid layout */
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 10px; /* Gap between items */
+}
+
+/* Individual grid item styles */
+.grid-item {
+    padding: 20px; /* Padding */
+    background-color: #fff; /* Background color */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+/* Styles for images within the grid */
+.grid-item img {
+    width: 100%; /* Full width */
+    border-radius: 5px; /* Rounded corners */
+}
 </style>
 
 </html>
-
