@@ -18,6 +18,8 @@ _author: [planetwide](https://github.com/planetwiide)_
 
 **miamcloud** is a flask-based web app designed to make file management simple and accessible through a sleek web interface. easily upload, download, and manage files or images directly from your server. the app also integrates with **pystyle** for a visually appealing experience, including interactive ascii banners and a clean terminal display.
 
+**UPDATE: added a login via a db and an app to manage users!
+
 ---
 
 ## 🌟 features
