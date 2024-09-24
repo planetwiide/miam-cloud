@@ -1,4 +1,4 @@
-# MiamCloud - v3.0.3
+# MiamCloud - v4.0.0
 # Author: Planetwide
 # Description:
 # This script sets up a Flask-based web application named "MiamCloud" for 
@@ -213,6 +213,7 @@ def main():
 
     # Generate the URL and start the Flask server
     url = f"{login} ┃ http://{host}:{port}/"
+    open_browser(url)
     
     display_ui()
     print(Colorate.Vertical(Colors.blue_to_purple, f"{login} ┃ running on: {url}"))
