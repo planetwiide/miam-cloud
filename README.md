@@ -34,16 +34,16 @@ _**UPDATE: added a login page for security and logs via webhook (discord)**_
 
 ## 📜 table of contents
 
-- [📥 installation](#installation)
-- [📖 usage](#usage)
-- [🗂️ file routes](#file-routes)
-- [🔐 authentication](#user-authentication)
-  [🌐 webhook logging](#webhook-logging)
-- [🤝 contributing](#contributing)
-- [🐞 issues](#issues)
-- [📝 license](#license)
-- [📗 credits](#credits)
-- [🖼️ preview](#preview)
+- [📥 installation](#-installation)
+- [📖 usage](#-usage)
+- [🗂️ file routes](#-file-routes)
+- [🔐 authentication](#-user-authentication)
+  [🌐 webhook logging](#-webhook-logging)
+- [🤝 contributing](#-contributing)
+- [🐞 issues](#-issues)
+- [📝 license](#-license)
+- [📗 credits](#-credits)
+- [🖼️ preview](#-preview)
 
 ---
 
