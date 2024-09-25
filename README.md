@@ -145,6 +145,8 @@ this project is licensed under the [mit license](https://opensource.org/licenses
 
 ## 🖼️ preview
 
-![image](https://github.com/user-attachments/assets/5c5b40d9-b397-49e5-a145-c01b4a9ac9f4)
-![image](https://github.com/user-attachments/assets/3a89a0c3-28e9-45a1-9908-487525e5993b)
-![image](https://github.com/user-attachments/assets/5b844e8b-fd2e-493d-8f33-fcdc3f6d418a)
+![image0](https://github.com/user-attachments/assets/dbe24a15-5f71-4a30-acf0-290ef29171c7)
+![image1](https://github.com/user-attachments/assets/04c3c4b2-f23f-447d-b93a-78a8ec43a83e)
+![image2](https://github.com/user-attachments/assets/7a54da41-e08e-48af-8345-b56a25bce391)
+![image3](https://github.com/user-attachments/assets/a85356b1-de97-427c-9e9d-6f772b47094c)
+![image4](https://github.com/user-attachments/assets/74ccdf36-1b3c-429d-bda5-bf75b5d7999b)
