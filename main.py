@@ -19,28 +19,28 @@ import requests
 import atexit
 import json
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Discord embed webhook logs URL to set, input "none" if no logs wanted. none is by default.
 
 webhook_url = "none"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # ASCII banner for MiamCloud
 miamcloud_banner = """
