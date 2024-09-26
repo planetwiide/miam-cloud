@@ -62,13 +62,13 @@ before starting, make sure you have:
    
 ```bash
    git clone https://github.com/planetwiide/miam-cloud.git
-   cd miam-cloud```
+   cd miam-cloud
 
 
 2. install the dependencies:
    
 ```bash
-   pip install -r requirements.txt```
+   pip install -r requirements.txt
 ---
 
 ### 🔐 user authentication
@@ -92,7 +92,7 @@ before starting, make sure you have:
 1. start the app:
    
 ```bash
-   python main.py```
+   python main.py
 
 
 2. input the ip and port when prompted, or hit enter to auto-configure.
