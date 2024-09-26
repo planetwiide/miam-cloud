@@ -38,7 +38,7 @@ _**UPDATE: added a login page for security and logs via webhook (discord)**_
 - [📖 usage](#-usage)
 - [🗂️ file routes](#-file-routes)
 - [🔐 authentication](#-user-authentication)
-  [🌐 webhook logging](#-webhook-logging)
+- [🌐 webhook logging](#-webhook-logging)
 - [🤝 contributing](#-contributing)
 - [🐞 issues](#-issues)
 - [📝 license](#-license)
@@ -60,15 +60,15 @@ before starting, make sure you have:
 
 1. clone the repo or download the project files:
    
-bash
+```bash
    git clone https://github.com/planetwiide/miam-cloud.git
-   cd miam-cloud
+   cd miam-cloud```
 
 
 2. install the dependencies:
    
-bash
-   pip install -r requirements.txt
+```bash
+   pip install -r requirements.txt```
 ---
 
 ### 🔐 user authentication
@@ -91,8 +91,8 @@ bash
 
 1. start the app:
    
-bash
-   python main.py
+```bash
+   python main.py```
 
 
 2. input the ip and port when prompted, or hit enter to auto-configure.
