@@ -1,4 +1,4 @@
-![miamcloud](https://github.com/user-attachments/assets/8a6895a6-044b-40c2-b494-e700a61f1215)
+![BannerMiamCloud](https://github.com/user-attachments/assets/7851eee4-c9a4-4e8c-95cb-741f72b13d1b)
 
 ![⭐](https://img.shields.io/github/stars/planetwiide/miam-cloud?style=social)
 ![🍴](https://img.shields.io/github/forks/planetwiide/miam-cloud?style=social)
